@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 7887756629879894532}
   m_Layer: 0
   m_Name: Zumbi
-  m_TagString: Inimigo
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

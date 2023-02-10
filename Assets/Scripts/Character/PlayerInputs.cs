@@ -5,6 +5,7 @@ using System;
 public class PlayerInputs : MonoBehaviour
 {
     public static Action<Vector2> OnMove;
+    public static Action<Vector2> OnRotate;
 
     PlayerSettings playerSettings;
 
@@ -18,8 +19,10 @@ public class PlayerInputs : MonoBehaviour
     }
 
     void ReadInputs(){
-        // movement input
         var inputDirection = playerSettings.movement.action.ReadValue<Vector2>();
+        var inputRotation = playerSettings.pointerPosition.action.ReadValue<Vector2>();
+
         OnMove?.Invoke(inputDirection.normalized);
+        OnRotate?.Invoke(inputRotation);
     }
 }
