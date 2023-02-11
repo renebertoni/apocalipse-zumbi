@@ -562,6 +562,8 @@ GameObject:
   - component: {fileID: 7887756629879894527}
   - component: {fileID: 7887756629879894533}
   - component: {fileID: 7887756629879894532}
+  - component: {fileID: 6426783660258989865}
+  - component: {fileID: 7887756629879894529}
   m_Layer: 0
   m_Name: Zumbi
   m_TagString: Enemy
@@ -697,7 +699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  stopDistance: 3
+  stopDistance: 2
 --- !u!114 &7887756629879894532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,6 +710,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d3ce9b34ecd09841a511cb1d10dc5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6426783660258989865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063500868937916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a9c6cea09c19041a23bf924547d6cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7887756629879894529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063500868937916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f7201a3854e2f44a398bcd578d7006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1065480718027956

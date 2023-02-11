@@ -5,24 +5,20 @@ public class EnemySettings : MonoBehaviour
 {
     public float speed;
     public float stopDistance;
-    NavMeshAgent m_navMesh;
-
-    public NavMeshAgent navMesh
-    {
-        get{ return m_navMesh; }
-    }
+    NavMeshAgent navMesh;
 
     void Awake()
     {
-        m_navMesh = GetComponent<NavMeshAgent>();
+        navMesh = GetComponent<NavMeshAgent>();
+        navMesh.velocity = new Vector3(0.1f,0.1f,0.1f);
     }
     
     void Start()
     {
-        if(m_navMesh) 
+        if(navMesh) 
         {
-            m_navMesh.speed = this.speed;
-            m_navMesh.stoppingDistance = this.stopDistance;
+            navMesh.speed = this.speed;
+            navMesh.stoppingDistance = this.stopDistance;
         }
     }
 }

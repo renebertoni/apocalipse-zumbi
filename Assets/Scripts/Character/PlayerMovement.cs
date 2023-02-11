@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     PlayerSettings playerSettings;
+    public LayerMask layermask;
 
     void Awake(){
         playerSettings = GetComponent<PlayerSettings>();
@@ -28,10 +29,8 @@ public class PlayerMovement : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 100, layermask))
         {
-            Debug.DrawRay(ray.origin, ray.direction, Color.red, 1000);
-            Debug.Log(hit.collider.name);
             Vector3 lookPosition = hit.point;
             lookPosition.y = transform.position.y;
             transform.LookAt(lookPosition);

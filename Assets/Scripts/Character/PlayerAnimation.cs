@@ -19,6 +19,6 @@ public class PlayerAnimation : MonoBehaviour
 
     void DoMove(Vector2 input){
         var speed = Mathf.Abs(input.x) + Mathf.Abs(input.y);
-        playerSettings.animator.SetFloat("moveSpeed", Mathf.Clamp(speed, 0, 1));
+        playerSettings.animator.SetFloat(Constants.Get.MOVE_SPEED, Mathf.Clamp(speed, 0, 1));
     }
 }

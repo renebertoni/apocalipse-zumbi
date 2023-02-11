@@ -4,11 +4,18 @@ public class WeaponShoot : MonoBehaviour
 {
     Transform bulletPoint;
     GameObject bullet;
-
+    
     private void Start() {
-        bulletPoint = transform.Find("BulletPosition");
-        bullet = Resources.Load<GameObject>("Bullet");
-        InvokeRepeating("DoShoot", 3f, 3f);
+        bulletPoint = transform.Find(Constants.Get.BULLET_POSITION);
+        bullet = Resources.Load<GameObject>(Constants.Get.BULLET);
+    }
+
+    void OnEnable() {
+        PlayerInputs.OnShoot += DoShoot;
+    }
+
+    void OnDisable() {
+        PlayerInputs.OnShoot -= DoShoot;
     }
 
     void DoShoot(){
