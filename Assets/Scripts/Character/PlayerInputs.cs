@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerInputs : MonoBehaviour
 {
     public static Action OnShoot;
+    public static Action DontShot;
     public static Action<Vector2> OnMove;
     public static Action<Vector2> OnRotate;
 
@@ -16,10 +17,10 @@ public class PlayerInputs : MonoBehaviour
     }
 
     private void OnEnable() {
-        playerSettings.shoot.action.performed += Shoot;
+        playerSettings.shoot.action.performed += LeftMouseClick;
     }
     private void OnDisable() {
-        playerSettings.shoot.action.performed -= Shoot;
+        playerSettings.shoot.action.performed -= LeftMouseClick;
     }
 
     void FixedUpdate()
@@ -35,7 +36,10 @@ public class PlayerInputs : MonoBehaviour
         OnMove?.Invoke(inputDirection.normalized);
     }
 
-    void Shoot(InputAction.CallbackContext obj){
-        OnShoot?.Invoke();
+    void LeftMouseClick(InputAction.CallbackContext obj){
+        if(playerSettings.isAlive)
+            OnShoot?.Invoke();
+        else
+            DontShot?.Invoke();
     }
 }

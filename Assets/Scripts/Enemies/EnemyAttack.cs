@@ -4,8 +4,6 @@ using System;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public static Action OnAttack;
-
     NavMeshAgent navMeshAgent;
     Animator animator;
 
@@ -21,9 +19,5 @@ public class EnemyAttack : MonoBehaviour
     {
         var isAttacking = navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance;
         animator.SetBool(Constants.Get.ATTACK, isAttacking);
-    }
-
-    void IsAttacking(){
-        OnAttack?.Invoke();
     }
 }

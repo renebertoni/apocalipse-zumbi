@@ -10,6 +10,7 @@ public class PlayerSettings : MonoBehaviour
     public CharacterController characterController;
     [HideInInspector]
     public Animator animator;
+    public bool isAlive = true;
 
     // attributes
     public static Vector3 position;
@@ -24,4 +25,15 @@ public class PlayerSettings : MonoBehaviour
     {
         position = transform.position;
     }
+
+    void OnEnable() {
+        GameHandler.OnGameOver += DoDie;
+    }
+    void OnDisable() {
+        GameHandler.OnGameOver -= DoDie;
+    }
+    void DoDie(){
+        isAlive = false;
+    }
 }
+

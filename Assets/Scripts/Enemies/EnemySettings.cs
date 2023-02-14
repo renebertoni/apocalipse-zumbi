@@ -15,8 +15,11 @@ public class EnemySettings : MonoBehaviour
     
     void Start()
     {
-        if(navMesh) 
-        {
+       int enemyTypes = transform.childCount;
+       var chosenEnemy = transform.GetChild(Random.Range(1, enemyTypes));
+       chosenEnemy.gameObject.SetActive(true);
+
+        if(navMesh) {
             navMesh.speed = this.speed;
             navMesh.stoppingDistance = this.stopDistance;
         }

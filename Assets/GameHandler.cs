@@ -1,16 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
+    public static Action OnGameOver;
+
+    private void Start() {
+        Time.timeScale = 1;
+    }
+
     void OnEnable() {
-        EnemyAttack.OnAttack += GameOver;
+        EnemyAttackTrigger.OnAttack += DoGameOver;
+        PlayerInputs.DontShot += RestartScene;
     }
+
     void OnDisable() {
-        EnemyAttack.OnAttack -= GameOver;
+        EnemyAttackTrigger.OnAttack -= DoGameOver;
+        PlayerInputs.DontShot -= RestartScene;
     }
-    void GameOver(){
-        // Time.timeScale = 0;
+
+    void RestartScene()
+    {
+        SceneManager.LoadScene(Constants.Get.LEVEL_01);
     }
+
+    void DoGameOver(){
+        OnGameOver?.Invoke();
+        Time.timeScale = 0;
+    }
+    
 }
