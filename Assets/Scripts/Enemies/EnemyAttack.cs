@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.AI;
-using System;
 
 public class EnemyAttack : MonoBehaviour
 {
-    NavMeshAgent navMeshAgent;
-    Animator animator;
+    [SerializeField]
+    private AudioSource audioAttack;
+    private NavMeshAgent navMeshAgent;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Awake()
@@ -19,5 +20,9 @@ public class EnemyAttack : MonoBehaviour
     {
         var isAttacking = navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance;
         animator.SetBool(Constants.Get.ATTACK, isAttacking);
+    }
+
+    public void PlaySound(){
+        audioAttack.Play();
     }
 }
