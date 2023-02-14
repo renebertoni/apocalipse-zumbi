@@ -11,12 +11,7 @@ public class BulletMovement : MonoBehaviour
     private MeshRenderer mesh;
 
     private void Start() {
-        bulletCollider = GetComponent<Collider>();
-        bulletCollider = GetComponent<Collider>();
         audioSource = GetComponent<AudioSource>();
-        bulletRigidbody = GetComponent<Rigidbody>();
-        mesh = GetComponent<MeshRenderer>();
-
         audioSource.Play();
         StartCoroutine(DestroyBullet());
     }
@@ -26,9 +21,9 @@ public class BulletMovement : MonoBehaviour
     }
     
     private void OnCollisionEnter(Collision other) {
-        bulletCollider.enabled = false;
-        bulletRigidbody.detectCollisions = false;
-        mesh.enabled = false;
+        GetComponent<Collider>().enabled = false;
+        GetComponent<Rigidbody>().detectCollisions = false;
+        GetComponent<MeshRenderer>().enabled = false;
     }
 
     IEnumerator DestroyBullet(){
