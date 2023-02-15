@@ -14,7 +14,7 @@ public class EnemySettings : MonoBehaviour
     }
     
     void Start()
-    {
+    {  
        int enemyTypes = transform.childCount;
        var chosenEnemy = transform.GetChild(Random.Range(1, enemyTypes));
        chosenEnemy.gameObject.SetActive(true);
