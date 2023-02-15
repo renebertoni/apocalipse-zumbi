@@ -29,5 +29,4 @@ public class GameHandler : MonoBehaviour
         OnGameOver?.Invoke();
         Time.timeScale = 0;
     }
-    
 }

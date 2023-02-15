@@ -1,9 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
-    public GameObject gameOver;
+    GameObject gameOver;
     // Start is called before the first frame update
     void Awake()
     {

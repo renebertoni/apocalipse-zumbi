@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AudioHandler : MonoBehaviour
 {
-    public List<AudioSource> audioSources = new List<AudioSource>();
+    private List<AudioSource> audioSources = new List<AudioSource>();
 
     void OnEnable()
     {
