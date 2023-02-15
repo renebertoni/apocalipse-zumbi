@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,24 +8,31 @@ public class AudioHandler : MonoBehaviour
     void OnEnable()
     {
         EnemyHealth.OnSetAudioSource += SetAudioSource;
+        GameHandler.OnGameOver += DoGameOver;
     }
     void OnDisable()
     {
         EnemyHealth.OnSetAudioSource -= SetAudioSource;
+        GameHandler.OnGameOver -= DoGameOver;
     }
 
     void SetAudioSource(AudioSource audioSource){
         if(!audioSources.Contains(audioSource))
+            audioSources.Add(audioSource);
         else{
             audioSources.Remove(audioSource);
-            cons
-            ClearEmptiesFromList();
+            ClearVoidsFromList();
         }
     }
 
-    void ClearEmptiesFromList(){
-        audioSources.RemoveAll(item => item == null);
-
+    void ClearVoidsFromList(){
+        audioSources.RemoveAll(item => !item);
     }
 
+    void DoGameOver(){
+        foreach (var item in audioSources)
+        {
+            item.Stop();
+        }
+    }
 }

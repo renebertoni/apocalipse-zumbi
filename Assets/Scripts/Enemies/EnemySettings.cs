@@ -6,6 +6,7 @@ public class EnemySettings : MonoBehaviour
     public float speed;
     public float stopDistance;
     NavMeshAgent navMesh;
+    public ParticleSystem bloodParticle;
 
     void Awake()
     {

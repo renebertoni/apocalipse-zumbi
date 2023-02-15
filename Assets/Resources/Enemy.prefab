@@ -760,6 +760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   stopDistance: 2
+  bloodParticle: {fileID: 5286093103015778059, guid: cdb8df387810f9049b61c219ed143913, type: 3}
 --- !u!114 &7887756629879894532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -920,7 +921,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 60
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 75

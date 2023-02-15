@@ -11,12 +11,12 @@ public class GameHandler : MonoBehaviour
     }
 
     void OnEnable() {
-        EnemyAttackTrigger.OnAttack += DoGameOver;
+        EnemyAttackTrigger.OnHit += DoGameOver;
         PlayerInputs.DontShot += RestartScene;
     }
 
     void OnDisable() {
-        EnemyAttackTrigger.OnAttack -= DoGameOver;
+        EnemyAttackTrigger.OnHit -= DoGameOver;
         PlayerInputs.DontShot -= RestartScene;
     }
 
