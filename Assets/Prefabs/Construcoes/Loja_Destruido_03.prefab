@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 4708712794094186}
   - component: {fileID: 33030149734394686}
   - component: {fileID: 23603575373441354}
+  - component: {fileID: 8920749600598421259}
   m_Layer: 0
   m_Name: Loja_Destruido_03
   m_TagString: Untagged
@@ -191,7 +192,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545628521161258}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -251,3 +252,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8920749600598421259
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545628521161258}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 24.849602, y: 7.6953783, z: 19.247355}
+  m_Center: {x: 0.8333788, y: 3.80751, z: 0.33956623}
