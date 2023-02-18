@@ -5,21 +5,24 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerSettings))]
 public class PlayerInputs : MonoBehaviour
 {
-    public static Action OnShoot;
+    public static Action Shoot;
     public static Action DontShot;
-    public static Action<Vector2> OnMove;
-    public static Action<Vector2> OnRotate;
+    public static Action<Vector2> Move;
+    public static Action<Vector2> Rotate;
 
     PlayerSettings playerSettings;
 
-    private void Awake() {
+    void Awake()
+    {
         playerSettings = GetComponent<PlayerSettings>();
     }
 
-    private void OnEnable() {
+    void OnEnable()
+    {
         playerSettings.shoot.action.performed += LeftMouseClick;
     }
-    private void OnDisable() {
+    void OnDisable()
+    {
         playerSettings.shoot.action.performed -= LeftMouseClick;
     }
 
@@ -28,17 +31,19 @@ public class PlayerInputs : MonoBehaviour
         ReadInputs();
     }
 
-    void ReadInputs(){
+    void ReadInputs()
+    {
         var inputDirection = playerSettings.movement.action.ReadValue<Vector2>();
         var inputRotation = playerSettings.pointerPosition.action.ReadValue<Vector2>();
         
-        OnRotate?.Invoke(inputRotation);
-        OnMove?.Invoke(inputDirection.normalized);
+        Rotate?.Invoke(inputRotation);
+        Move?.Invoke(inputDirection.normalized);
     }
 
-    void LeftMouseClick(InputAction.CallbackContext obj){
+    void LeftMouseClick(InputAction.CallbackContext obj)
+    {
         if(playerSettings.isAlive)
-            OnShoot?.Invoke();
+            Shoot?.Invoke();
         else
             DontShot?.Invoke();
     }

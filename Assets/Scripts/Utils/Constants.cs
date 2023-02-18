@@ -1,6 +1,7 @@
 namespace Constants
 {
-    public class Get{
+    public class Get
+    {
         public const string ENEMY = "Enemy";
         public const string ATTACK = "Attack";
         public const string BULLET = "Bullet";

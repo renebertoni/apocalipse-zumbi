@@ -3,10 +3,11 @@ using System;
 
 public class EnemyAttackTrigger : MonoBehaviour
 {
-    public static Action OnHit;
+    public static Action Hit;
 
-    private void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other)
+    {
         if(other.gameObject.CompareTag(Constants.Get.PLAYER))
-            OnHit?.Invoke();
+            Hit?.Invoke();
     }
 }

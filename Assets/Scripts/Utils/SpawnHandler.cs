@@ -1,35 +1,42 @@
 using UnityEngine;
-using System.Collections;
 
 public class SpawnHandler : MonoBehaviour
 {
     [SerializeField]
-    private Vector2 timeToSpawn;
-    [SerializeField]
-    private SpawnType spawnType;
-    private GameObject objetcToSpawn;
-    private float time;
+    int maxEnemies;
 
-    // Start is called before the first frame update
+    public static int MaxEnemies;
+    public static int EnemyCount = 0;
+
     void Start()
     {
-        objetcToSpawn =  ChooseObject();
-        StartCoroutine(SpawnController());
+        MaxEnemies = maxEnemies;
     }
 
-    IEnumerator SpawnController(){
-        time = Random.Range(timeToSpawn.x, timeToSpawn.y);
-        yield return new WaitForSeconds(time);
-        Instantiate(objetcToSpawn, transform.position, Quaternion.identity);
-        StartCoroutine(SpawnController());
+    void OnEnable()
+    {
+        EnemySpawn.EnemySpawned += OnEnemySpawned;
+        EnemyHealth.EnemyDead += OnEnemyDead;
     }
 
-    GameObject ChooseObject(){
-        switch(spawnType){
-            case SpawnType.Enemy:
-                return Resources.Load<GameObject>(Constants.Get.ENEMY);
-            default:
-                return Resources.Load<GameObject>(Constants.Get.ENEMY);
-        }
+    void OnDisable()
+    {
+        EnemySpawn.EnemySpawned -= OnEnemySpawned;
+        EnemyHealth.EnemyDead -= OnEnemyDead;
+    }
+
+    void OnEnemySpawned()
+    {
+        EnemyCount++;
+    }
+
+    void OnEnemyDead()
+    {
+        EnemyCount--;
+    }
+
+    public static bool CanSpawnEnemy()
+    {
+        return EnemyCount <= MaxEnemies;
     }
 }

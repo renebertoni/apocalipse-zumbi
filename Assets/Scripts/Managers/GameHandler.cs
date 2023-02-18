@@ -4,19 +4,22 @@ using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
-    public static Action OnGameOver;
+    public static Action GameOver;
 
-    private void Start() {
+    private void Start()
+    {
         Time.timeScale = 1;
     }
 
-    void OnEnable() {
-        EnemyAttackTrigger.OnHit += DoGameOver;
+    void OnEnable()
+    {
+        EnemyAttackTrigger.Hit += DoGameOver;
         PlayerInputs.DontShot += RestartScene;
     }
 
-    void OnDisable() {
-        EnemyAttackTrigger.OnHit -= DoGameOver;
+    void OnDisable()
+    {
+        EnemyAttackTrigger.Hit -= DoGameOver;
         PlayerInputs.DontShot -= RestartScene;
     }
 
@@ -25,8 +28,9 @@ public class GameHandler : MonoBehaviour
         SceneManager.LoadScene(Constants.Get.LEVEL_01);
     }
 
-    void DoGameOver(){
-        OnGameOver?.Invoke();
+    void DoGameOver()
+    {
+        GameOver?.Invoke();
         Time.timeScale = 0;
     }
 }

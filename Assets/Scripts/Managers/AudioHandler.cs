@@ -3,33 +3,39 @@ using UnityEngine;
 
 public class AudioHandler : MonoBehaviour
 {
-    private List<AudioSource> audioSources = new List<AudioSource>();
+    List<AudioSource> audioSources = new List<AudioSource>();
 
     void OnEnable()
     {
-        EnemyHealth.OnSetAudioSource += SetAudioSource;
-        GameHandler.OnGameOver += DoGameOver;
+        EnemySpawn.SetAudioSource += DoSetAudioSource;
+        GameHandler.GameOver += DoGameOver;
     }
     void OnDisable()
     {
-        EnemyHealth.OnSetAudioSource -= SetAudioSource;
-        GameHandler.OnGameOver -= DoGameOver;
+        EnemySpawn.SetAudioSource -= DoSetAudioSource;
+        GameHandler.GameOver -= DoGameOver;
     }
 
-    void SetAudioSource(AudioSource audioSource){
+    void DoSetAudioSource(AudioSource audioSource)
+    {
         if(!audioSources.Contains(audioSource))
+        {
             audioSources.Add(audioSource);
-        else{
+        }
+        else
+        {
             audioSources.Remove(audioSource);
             ClearVoidsFromList();
         }
     }
 
-    void ClearVoidsFromList(){
+    void ClearVoidsFromList()
+    {
         audioSources.RemoveAll(item => !item);
     }
 
-    void DoGameOver(){
+    void DoGameOver()
+    {
         foreach (var item in audioSources)
         {
             item.Stop();

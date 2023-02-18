@@ -5,8 +5,9 @@ public class EnemySettings : MonoBehaviour
 {
     public float speed;
     public float stopDistance;
-    NavMeshAgent navMesh;
     public ParticleSystem bloodParticle;
+
+    NavMeshAgent navMesh;
 
     void Awake()
     {
@@ -20,7 +21,8 @@ public class EnemySettings : MonoBehaviour
        var chosenEnemy = transform.GetChild(Random.Range(1, enemyTypes));
        chosenEnemy.gameObject.SetActive(true);
 
-        if(navMesh) {
+        if(navMesh)
+        {
             navMesh.speed = this.speed;
             navMesh.stoppingDistance = this.stopDistance;
         }

@@ -6,26 +6,31 @@ public class PlayerMovement : MonoBehaviour
     PlayerSettings playerSettings;
     public LayerMask layermask;
 
-    void Awake(){
+    void Awake()
+    {
         playerSettings = GetComponent<PlayerSettings>();
     }
 
-    void OnEnable() {
-        PlayerInputs.OnMove += DoMove;
-        PlayerInputs.OnRotate += DoRotate;
+    void OnEnable()
+    {
+        PlayerInputs.Move += DoMove;
+        PlayerInputs.Rotate += DoRotate;
     }
 
-    void OnDisable() {
-        PlayerInputs.OnMove -= DoMove;
-        PlayerInputs.OnRotate -= DoRotate;
+    void OnDisable()
+    {
+        PlayerInputs.Move -= DoMove;
+        PlayerInputs.Rotate -= DoRotate;
     }
 
-    void DoMove(Vector2 input){
+    void DoMove(Vector2 input)
+    {
         var inputMove = input * Time.deltaTime * playerSettings.speed;
         playerSettings.characterController.Move( new Vector3(inputMove.x, 0, inputMove.y) );
     }
 
-    void DoRotate(Vector2 mousePosition){
+    void DoRotate(Vector2 mousePosition)
+    {
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
         RaycastHit hit;
 
